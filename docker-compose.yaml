@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   app-prod:
     image: bolt-ai:production
@@ -7,7 +9,7 @@ services:
       target: bolt-ai-production
     ports:
       - "5173:5173"
-    env_file: ".env.local"
+    env_file: ".env.local"  # Ensure this file exists with the necessary environment variables
     environment:
       - NODE_ENV=production
       - COMPOSE_PROFILES=production
@@ -34,6 +36,8 @@ services:
   app-dev:
     image: bolt-ai:development
     build:
+      context: .
+      dockerfile: Dockerfile
       target: bolt-ai-development
     environment:
       - NODE_ENV=development
@@ -66,4 +70,6 @@ services:
     ports:
       - "5173:5173"
     command: pnpm run dev --host 0.0.0.0
-    profiles: ["development", "default"]
+    profiles:
+      - development
+      - default
