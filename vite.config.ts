@@ -4,7 +4,7 @@ import { defineConfig, type ViteDevServer } from 'vite';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import { optimizeCssModules } from 'vite-plugin-optimize-css-modules';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import remix from '@remix-run/vite';
+// import remix from '@remix-run/vite';
 
 import { execSync } from 'child_process';
 
@@ -17,11 +17,7 @@ const getGitHash = () => {
   }
 };
 
-// import { defineConfig } from 'vite';
 
-export default defineConfig({
-  plugins: [remix()],
-});
 
 
 export default defineConfig((config) => {
